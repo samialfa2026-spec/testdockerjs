@@ -1,15 +1,15 @@
 FROM node:18-slim
 
+RUN apt-get update && apt-get install -y wget && apt-get clean
+
 WORKDIR /app
 
 COPY package.json .
-
-RUN npm install express
+RUN npm install
 
 COPY start.sh .
-
 RUN chmod +x start.sh
 
 EXPOSE 3000
 
-CMD ["bash", "start.sh"]
+CMD ["./start.sh"]
